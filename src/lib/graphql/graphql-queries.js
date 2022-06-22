@@ -13,11 +13,16 @@ const POSTS_FRAGMENT = gql`
 
 export const getAllPosts = gql`
   ${POSTS_FRAGMENT}
-  query AllPosts {
-    posts(orderBy: date_DESC) {
+  query AllPosts($limit: Int) {
+    posts(orderBy: date_DESC, first: $limit) {
+      title
       slug
+      date
       excerpt
-      ...PostDetails
+      tags
+      coverImage {
+        url
+      }
     }
   }
 `
