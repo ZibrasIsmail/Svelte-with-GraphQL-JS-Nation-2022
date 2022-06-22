@@ -49,3 +49,26 @@ export const getPostQuery = gql`
     }
   }
 `
+
+export const getAllPages = gql`
+  query Pages {
+    pages {
+      title
+      slug
+      content {
+        html
+      }
+    }
+  }
+`
+
+export const getPageQuery = gql`
+  query Page($slug: String!) {
+    page(where: { slug: $slug }) {
+      title
+      content {
+        html
+      }
+    }
+  }
+`
